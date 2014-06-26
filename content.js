@@ -1,5 +1,4 @@
 console.log('it works!');
-console.log('GIF',GIF);
 
 var youtube_video = document.querySelector('video.video-stream');
 var canvas = document.createElement('canvas');
@@ -26,26 +25,22 @@ var gif;
 var capture_interval;
 
 var startCapture = function(){
-    gif = new GIF({
-        workers: 2,
-        quality: 5,
-        repeat: 0,
-        workerScript: chrome.runtime.getURL('vendor/gif.worker.js')
-    });
-    gif.on( 'finished', function( blob ){
-        window.open( URL.createObjectURL( blob ) );
+    gif = new GIFter({
+        width: canvas.width,
+        height: canvas.height,
+        loop: 0,
+        loopDelay: 0,
+        frameDelay: 100
     });
     capture_interval = setInterval( function(){
-        gif.addFrame( canvas, {
-            delay: 100,
-            copy: true
-        });
+        gif.addFrame( canvas );
     }, 100 );
 };
 
 var endCapture = function(){
     clearInterval( capture_interval );
-    gif.render();
+    var img = gif.render();
+    window.open( img );
 };
 
 youtube_video.addEventListener( 'play', function(){
