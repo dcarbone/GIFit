@@ -5,7 +5,7 @@
     "permissions": ["activeTab"],
     "content_scripts": [{
         "matches": ["*://www.youtube.com/*"],
-        "js": ["vendor/patch-worker.js", "vendor/omggif.js", "vendor/b64.js", "vendor/gifter.js", "content.js"],
+        "js": ["vendor/patch-worker.js", "vendor/LZWEncoder.js", "vendor/NeuQuant.js", "vendor/GIFEncoder.js", "vendor/b64.js", "content.js"],
         "run_at": "document_end"
     }],
     "web_accessible_resources": [],
