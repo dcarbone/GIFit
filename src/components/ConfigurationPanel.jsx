@@ -116,6 +116,18 @@ var ConfigurationPanel = React.createClass({
 							/>
 						</div>
 					</fieldset>
+                    <fieldset>
+                        <div className="gifit__inputs">
+                            <label className="gifit__label" htmlFor="gifit-option-caption">Caption</label>
+                            <input
+                                id="gifit-option-caption"
+                                className="gifit__input "
+                                name="caption"
+                                type="text"
+                                onChange={this._onChange}
+                            />
+                        </div>
+                    </fieldset>
 					<div className="gifit-configuration__actions">
 						<button
 							id="gifit-submit"
@@ -158,6 +170,10 @@ var ConfigurationPanel = React.createClass({
 		if( prop === 'start' || prop === 'end' ){
 			this.seekTo( value );
 		}
+
+        if( prop === 'caption' ){
+            this.addCaption(value);
+        }
 	},
 	_onSubmit: function( event ){
 		event.preventDefault();
@@ -193,7 +209,10 @@ var ConfigurationPanel = React.createClass({
 		if( time >= 0 ){
 			this._video_element.currentTime = time;
 		}
-	}
+	},
+    addCaption: function( text ){
+
+    }
 });
 
 module.exports = ConfigurationPanel;
